@@ -1,7 +1,6 @@
 #include "hash_table.h"
-#include "hash_functions.h"
 
-HashT_Errors HashTableInit(hash_table_struct *hash_table, ssize_t capacity, const char *logfile_name, HashFunctions hash_function)
+HashT_Errors HashTableInit(hash_table_struct *hash_table, ssize_t capacity, const char *logfile_name, Using_HF hash_function)
 {
     assert(hash_table != NULL);
     assert(capacity > 0);
@@ -33,10 +32,11 @@ HashT_Errors HashTableVerify(hash_table_struct *hash_table)
 {
     ASSERT(hash_table);
 
-    if      (hash_table == NULL)                      return EMPTY_POINTER_ON_HT_STRUCTURE;
-    else if (hash_table->capacity < 0)                return ERROR_IN_CAPACITY;
-    else if (hash_table->buckets == NULL)             return EMPTY_POINTER_ON_DATA;
-    if      (hash_table->HashFunction >= NUMBER_OF_HF) return EMPTY_POINTER_ON_HASH_FUNCTION;
+    if      (hash_table == NULL)                       return EMPTY_POINTER_ON_HT_STRUCTURE;
+    else if (hash_table->capacity < 0)                 return ERROR_IN_CAPACITY;
+    else if (hash_table->buckets == NULL)              return EMPTY_POINTER_ON_DATA;
+    if      (hash_table->HashFunction.hash_f == NULL)  return EMPTY_POINTER_ON_HASH_FUNCTION;
+    if      (hash_table->HashFunction.hf_name == NULL) return MISSING_HASH_FUNCTION_NAME;
     
     for (size_t i = 0; i < hash_table->capacity; i++)
     {

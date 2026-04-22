@@ -1,17 +1,5 @@
 #include "hash_functions.h"
 
-const char *hash_functions_names[NUMBER_OF_HF] = {"ZeroHF", "FirstAlphaHF", "WordLengthHF", "ASCIIHF", "RolHF", "CRC32HF"};
-
-UsedHashFunction hash_functions[NUMBER_OF_HF] = 
-{
-    ZeroHF,
-    FirstAlphaHF,
-    WordLengthHF,
-    ASCIIHF,
-    RolHF,
-    CRC32HF
-};
-
 size_t ZeroHF(char *key, ssize_t capacity)
 {
     return 0;
@@ -88,16 +76,27 @@ void InitCRC32Table()
 
 size_t CRC32HF(char *key, ssize_t capacity)
 {
-    uint32_t crc = 0xFFFFFFFF;
     unsigned char *word = (unsigned char *)key;
 
-    while (*word) 
+    uint32_t crc = ~0u;
+    const uint32_t filter = 0xEDB88320;
+
+    size_t i = 0;
+    while (word[i] != '\0') 
     {
-        crc = (crc >> 8) ^ crc32_table[(crc ^ *word) & 0xFF];
-        word++;
+        crc ^= (uint32_t) word[i];
+        for (int j = 0; j < 8; j++) {
+            if (crc & 1) 
+            {
+                crc = (crc >> 1) ^ filter;
+            }
+            else 
+            {
+                crc >>= 1;
+            }
+        }
+        i++;
     }
 
-    uint32_t final_crc = crc ^ 0xFFFFFFFF;
-    
-    return (size_t)final_crc % capacity;
+    return (size_t)(~crc % capacity);
 }

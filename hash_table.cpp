@@ -15,9 +15,10 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
 
     printf("num_of_words_in_file = %zu\n", words.num_of_words_in_file);
 
+    UsedHashFunction using_hf = hash_table->HashFunction.hash_f;
     for (size_t i = 0; i < words.num_of_words_in_file; i++)
     {
-        hash_index = hash_functions[(int)hash_table->HashFunction](words.pointers_on_words[i], hash_table->capacity);
+        hash_index = using_hf(words.pointers_on_words[i], hash_table->capacity);
         Node *current_node = NULL;
 
         while (current_node != NULL && strcmp(words.pointers_on_words[i], current_node->word_ptr) != 0) 
@@ -50,6 +51,28 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
     ASSERT(hash_table);
 
     return err;
+}
+
+bool FindTheWordInHashTable(hash_table_struct *hash_table, const char *word)
+{
+    bool found = false;
+    size_t hash_index = 0;
+
+    hash_index = hash_table->HashFunction.hash_f((char *)word, hash_table->capacity);
+
+    Node *node = hash_table->buckets[hash_index].head;
+
+    while (node != NULL)
+    {
+        if (!strcmp(word, node->word_ptr))
+        {
+            found = true;
+            break;
+        }
+        node = node->next;
+    }
+
+    return found;
 }
 
 HashT_Errors SaveDataToCSVFile(hash_table_struct *hash_table, const char *name_of_file)
@@ -117,7 +140,7 @@ HashT_Errors WriteToMDFile(hash_table_struct *hash_table, const char *png_name, 
 
     fprintf(md_file, "## RESULTS\n\n");
     
-    fprintf(md_file, "**Hash Function      :** %s \n", hash_functions_names[hash_table->HashFunction]);
+    fprintf(md_file, "**Hash Function      :** %s \n", hash_table->HashFunction.hf_name);
     fprintf(md_file, "**Hash Table Capacity:** %zd\n", hash_table->capacity);
     fprintf(md_file, "**Total Words        :** %zd\n", hash_table->total_elements);
     fprintf(md_file, "**Variance           :** %lf\n", variance);

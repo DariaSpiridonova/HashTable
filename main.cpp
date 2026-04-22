@@ -1,24 +1,21 @@
 #include "hash_table.h"
 
-int main()
+int main(int argc, char *argv[])
 {  
+    // printf("Please, choose a hash function to fill in the table\n");
     data_of_buffer data_in_buffer = ReadToBufferFromFile("text.txt");
     if (data_in_buffer.buffer == NULL || data_in_buffer.num_of_bytes_in_file == 0)
         return 1;
-
-    printf("%s\n", data_in_buffer.buffer);
 
     words_info words = GetWordsStruct(data_in_buffer.buffer);
     if (words.num_of_words_in_file == 0 || words.pointers_on_words == NULL)
         return 2;
 
-    printf("<%s>\n", words.pointers_on_words[1]);
-
     hash_table_struct hash_table;
 
     HashT_Errors err = NO_HT_ERROR;
 
-    if ((err = HashTableInit(&hash_table, 4001, "logfile.htm", ZERO_HF)))
+    if ((err = HashTableInit(&hash_table, 4001, "logfile.htm", {RolHF, "RolHF"})))
     {
         print_error(err);
         return 3;
@@ -49,6 +46,12 @@ int main()
         return 6;
     }
 
+    volatile bool found = false;
+    for (size_t i = 0; i < words.num_of_words_in_file; i++)
+    {
+        found = FindTheWordInHashTable(&hash_table, words.pointers_on_words[i]);
+    }
+    
     if ((err = HashTableDestroy(&hash_table)))
     {
         print_error(err);

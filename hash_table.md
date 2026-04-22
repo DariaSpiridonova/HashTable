@@ -152,3 +152,476 @@
 
 -------------------------------------------------------------------------
 
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_27_5945701586.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_39_39872545957.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_40_23772453650.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_40_52186906534.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_55797594225.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_55910739460.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_5624756407.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_56141613281.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_56256305083.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_56371918790.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_56490932793.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_56607936602.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_56723143388.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_56838815996.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_56957870915.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_5790417712.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57208338599.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57329066392.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57425110236.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57493887537.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57560170499.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57623960463.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57687845356.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57754048949.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57817918893.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57882100391.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_57949567469.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_5716383399.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_5885781853.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_58154218999.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_58217100604.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_58282222503.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_11_58_58349711623.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_12_13_48911229673.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_12_18_28966175393.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_12_24_21731143022.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** ZeroHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 4525
+**Variance           :** 5116.364909
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_12_25_08953311058.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** RolHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 28272
+**Variance           :** 977.868283
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_17_19_45541645194.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** RolHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 28272
+**Variance           :** 977.868283
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_17_20_37728084137.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** CRC32 
+**Hash Table Capacity:** 4001
+**Total Words        :** 28272
+**Variance           :** 87295.141965
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_21_17_21_15863566288.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** CRC32HF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 1026432
+**Variance           :** 1283830.418395
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_22_17_23_39126828498.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** CRC32HF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 1026432
+**Variance           :** 1283830.418395
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_22_17_24_45331681398.png)
+
+-------------------------------------------------------------------------
+
+## RESULTS
+
+**Hash Function      :** RolHF 
+**Hash Table Capacity:** 4001
+**Total Words        :** 1026432
+**Variance           :** 1286838.330417
+### Hash Histogram
+![A histogram of the distribution of words in a hash table](hash_table_2026_04_22_17_25_26829159845.png)
+
+-------------------------------------------------------------------------
+
