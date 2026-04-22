@@ -2,7 +2,7 @@ FLAGS = -D _DEBUG -O3 -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggressive-
 
 CXX = g++
 
-SOURCES =  main.cpp hash_functions.cpp hash_table.cpp file_functions.cpp management_functions.cpp
+SOURCES =  main_argc.cpp hash_functions.cpp hash_table.cpp file_functions.cpp management_functions.cpp
 OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
 
 all: hash_table.exe

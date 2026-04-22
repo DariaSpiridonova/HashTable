@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <time.h>
+#include <immintrin.h>
 
 #define HASHT_DUMP(hash_table)\
         HashTableDump(hash_table,__FILE__, __LINE__)
@@ -46,6 +47,16 @@ typedef struct
     UsedHashFunction hash_f;
     const char *hf_name;
 } Using_HF;
+
+Using_HF hf_structures[] = 
+{
+    {ZeroHF, "ZeroHF"},
+    {FirstAlphaHF, "FirstAlphaHF"},
+    {WordLengthHF, "WordLengthHF"},
+    {ASCIIHF, "ASCIIHF"},
+    {RolHF, "RolHF"},
+    {CRC32HF, "CRC32HF"},
+};
 
 typedef struct
 {
