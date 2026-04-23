@@ -1,5 +1,15 @@
 #include "hash_table.h"
 
+const Using_HF hf_structures[] = 
+{
+    {ZeroHF, "ZeroHF"},
+    {FirstAlphaHF, "FirstAlphaHF"},
+    {WordLengthHF, "WordLengthHF"},
+    {ASCIIHF, "ASCIIHF"},
+    {RolHF, "RolHF"},
+    {CRC32HF, "CRC32HF"},
+};
+
 int main(int argc, char *argv[])
 {  
     if (argc < 2) 

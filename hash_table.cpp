@@ -16,12 +16,14 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
     printf("num_of_words_in_file = %zu\n", words.num_of_words_in_file);
 
     UsedHashFunction using_hf = hash_table->HashFunction.hash_f;
+    unsigned long long start = __rdtsc();
     for (size_t i = 0; i < words.num_of_words_in_file; i++)
     {
         hash_index = using_hf(words.pointers_on_words[i], hash_table->capacity);
+        
         Node *current_node = NULL;
-
-        while (current_node != NULL && strcmp(words.pointers_on_words[i], current_node->word_ptr) != 0) 
+        
+        while (current_node != NULL && strcmp(words.pointers_on_words[i], current_node->str_node.str) != 0) 
         {
             current_node = current_node->next;
         }
@@ -31,14 +33,17 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
             Node *new_node = (Node *)calloc(1, sizeof(Node));
             if (!new_node) 
                 return ALLOCATE_MEMORY_ERROR;
-
-            new_node->word_ptr = words.pointers_on_words[i];
+                
+            new_node->str_node.str = words.pointers_on_words[i];
+            new_node->str_node.len = strlen(words.pointers_on_words[i]);
             new_node->next = hash_table->buckets[hash_index].head;
             
             hash_table->buckets[hash_index].head = new_node;
             hash_table->buckets[hash_index].size++;
         }
     }
+    unsigned long long end = __rdtsc();
+    printf("Ticks for %s: %llu\n", hash_table->HashFunction.hf_name, end - start);
 
     hash_table->total_elements = GetTotalElementsNumber(hash_table);
 
@@ -64,7 +69,7 @@ bool FindTheWordInHashTable(hash_table_struct *hash_table, const char *word)
 
     while (node != NULL)
     {
-        if (!strcmp(word, node->word_ptr))
+        if (!strcmp(word, node->str_node.str))
         {
             found = true;
             break;

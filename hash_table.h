@@ -31,9 +31,15 @@ typedef struct
     char **pointers_on_words;
 } words_info;
 
+typedef struct 
+{
+    char *str;
+    size_t len;
+} String_Node;
+
 typedef struct Node 
 {
-    char *word_ptr;     
+    String_Node str_node;     
     struct Node *next;  
 } Node;
 
@@ -47,16 +53,6 @@ typedef struct
     UsedHashFunction hash_f;
     const char *hf_name;
 } Using_HF;
-
-Using_HF hf_structures[] = 
-{
-    {ZeroHF, "ZeroHF"},
-    {FirstAlphaHF, "FirstAlphaHF"},
-    {WordLengthHF, "WordLengthHF"},
-    {ASCIIHF, "ASCIIHF"},
-    {RolHF, "RolHF"},
-    {CRC32HF, "CRC32HF"},
-};
 
 typedef struct
 {

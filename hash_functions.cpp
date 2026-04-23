@@ -1,6 +1,6 @@
 #include "hash_functions.h"
 
-size_t ZeroHF(char *key, ssize_t capacity)
+size_t ZeroHF([[maybe_unused]] char *key, [[maybe_unused]] ssize_t capacity)
 {
     return 0;
 }
@@ -85,7 +85,8 @@ size_t CRC32HF(char *key, ssize_t capacity)
     while (word[i] != '\0') 
     {
         crc ^= (uint32_t) word[i];
-        for (int j = 0; j < 8; j++) {
+        for (int j = 0; j < 8; j++) 
+        {
             if (crc & 1) 
             {
                 crc = (crc >> 1) ^ filter;
