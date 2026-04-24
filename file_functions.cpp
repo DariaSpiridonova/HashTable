@@ -76,9 +76,9 @@ size_t GetNumOfWordsInFile(char *buffer)
     return num;
 }
 
-void GetPointersOnWords(char *buffer, char **pointers_on_words, size_t num_of_words_in_file)
+void GetPointersOnWords(char *buffer, String_Node *words_structures, size_t num_of_words_in_file)
 {
-    assert(pointers_on_words != NULL);
+    assert(words_structures != NULL);
     assert(buffer != NULL);
 
     while (!isalpha(*buffer))
@@ -92,14 +92,17 @@ void GetPointersOnWords(char *buffer, char **pointers_on_words, size_t num_of_wo
     size_t i = 0;
     for (; i < num_of_words_in_file - 1; i++)
     {
-        pointers_on_words[i] = ptr_on_word;
-        ptr_on_word = strchr(ptr_on_word, '\0') + 1;
+        words_structures[i].str = ptr_on_word;
+        words_structures[i].len = strlen(ptr_on_word);
+        ptr_on_word += words_structures[i].len + 1;
         while (!isalpha(*ptr_on_word))
             ptr_on_word++;
     }
-    pointers_on_words[i] = ptr_on_word;
+    words_structures[i].str = ptr_on_word;
+    words_structures[i].len = strlen(ptr_on_word);
 }
 
+__attribute__((noinline))
 words_info GetWordsStruct(char *buffer)
 {
     assert(buffer != NULL);
@@ -108,11 +111,11 @@ words_info GetWordsStruct(char *buffer)
     size_t num_of_words_in_file = GetNumOfWordsInFile(buffer);
     // printf("%d\n", GetNumOfWordsInFile); // проверка количества слов в файле
 
-    char **pointers_on_words = (char **)calloc(num_of_words_in_file, sizeof(char *));
-    GetPointersOnWords(buffer, pointers_on_words, num_of_words_in_file);
+    String_Node *words_structures = (String_Node *)calloc(num_of_words_in_file, sizeof(String_Node));
+    GetPointersOnWords(buffer, words_structures, num_of_words_in_file);
 
     words.num_of_words_in_file = num_of_words_in_file;
-    words.pointers_on_words = pointers_on_words;
+    words.pointers_on_words_structures = words_structures;
 
     return words;
 }

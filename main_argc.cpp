@@ -8,6 +8,7 @@ const Using_HF hf_structures[] =
     {ASCIIHF, "ASCIIHF"},
     {RolHF, "RolHF"},
     {CRC32HF, "CRC32HF"},
+    {CRC32HFIntrin, "CRC32HFIntrin"}
 };
 
 int main(int argc, char *argv[])
@@ -25,14 +26,14 @@ int main(int argc, char *argv[])
         return 1;
 
     words_info words = GetWordsStruct(data_in_buffer.buffer);
-    if (words.num_of_words_in_file == 0 || words.pointers_on_words == NULL)
+    if (words.num_of_words_in_file == 0 || words.pointers_on_words_structures == NULL)
         return 2;
 
     hash_table_struct hash_table;
 
     HashT_Errors err = NO_HT_ERROR;
 
-    if ((err = HashTableInit(&hash_table, 4001, "logfile.htm", HashF)))
+    if ((err = HashTableInit(&hash_table, words.num_of_words_in_file, 4001, "logfile.htm", HashF)))
     {
         print_error(err);
         return 3;
@@ -40,14 +41,12 @@ int main(int argc, char *argv[])
 
     if ((err = FillInHashTable(&hash_table, words)))
     {
+        free(data_in_buffer.buffer);
+        free(words.pointers_on_words_structures);
+        HashTableDestroy(&hash_table);
         print_error(err);
         return 4;
     }
-
-    // Что мы оптимизируем? Поиск по хеш таблице!
-    // Берем N слов и ищем их, замеряя время
-
-    // hyperfine, rdtsc
 
     // if ((err = SaveDataToCSVFile(&hash_table, "hash_table.csv")))
     // {
@@ -68,7 +67,7 @@ int main(int argc, char *argv[])
     unsigned long long start = __rdtsc();
     for (size_t i = 0; i < words.num_of_words_in_file; i++)
     {
-        found = FindTheWordInHashTable(&hash_table, words.pointers_on_words[i]);
+        found = FindTheWordInHashTable(&hash_table, &(words.pointers_on_words_structures[i]));
     }
     unsigned long long end = __rdtsc();
     printf("Ticks: %llu\n", end - start);
@@ -80,7 +79,7 @@ int main(int argc, char *argv[])
     }
 
     free(data_in_buffer.buffer);
-    free(words.pointers_on_words);
+    free(words.pointers_on_words_structures);
     // free((void*)png_file_name); 
 
     return 0;

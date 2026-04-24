@@ -17,25 +17,31 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
 
     UsedHashFunction using_hf = hash_table->HashFunction.hash_f;
     unsigned long long start = __rdtsc();
+    if (using_hf == CRC32HF)
+    {
+        InitCRC32Table();
+    }
     for (size_t i = 0; i < words.num_of_words_in_file; i++)
     {
-        hash_index = using_hf(words.pointers_on_words[i], hash_table->capacity);
+        hash_index = using_hf(&(words.pointers_on_words_structures[i]), hash_table->capacity);
         
-        Node *current_node = NULL;
+        Node *current_node = hash_table->buckets[hash_index].head; 
         
-        while (current_node != NULL && strcmp(words.pointers_on_words[i], current_node->str_node.str) != 0) 
+        while (current_node != NULL && strcmp(words.pointers_on_words_structures[i].str, current_node->str_node.str) != 0) 
         {
+            if (words.pointers_on_words_structures[i].len == current_node->str_node.len &&
+                strcmp(words.pointers_on_words_structures[i].str, current_node->str_node.str) == 0) 
+            {
+                break; // found duplicate
+            }
             current_node = current_node->next;
         }
 
         if (current_node == NULL) 
         {
-            Node *new_node = (Node *)calloc(1, sizeof(Node));
-            if (!new_node) 
-                return ALLOCATE_MEMORY_ERROR;
-                
-            new_node->str_node.str = words.pointers_on_words[i];
-            new_node->str_node.len = strlen(words.pointers_on_words[i]);
+            Node *new_node = &(hash_table->nodes_pool[hash_table->next_free_node++]);
+               
+            new_node->str_node = words.pointers_on_words_structures[i];
             new_node->next = hash_table->buckets[hash_index].head;
             
             hash_table->buckets[hash_index].head = new_node;
@@ -58,26 +64,24 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
     return err;
 }
 
-bool FindTheWordInHashTable(hash_table_struct *hash_table, const char *word)
+bool FindTheWordInHashTable(hash_table_struct *hash_table, String_Node *word_structure)
 {
-    bool found = false;
     size_t hash_index = 0;
 
-    hash_index = hash_table->HashFunction.hash_f((char *)word, hash_table->capacity);
+    hash_index = hash_table->HashFunction.hash_f(word_structure, hash_table->capacity);
 
     Node *node = hash_table->buckets[hash_index].head;
 
     while (node != NULL)
     {
-        if (!strcmp(word, node->str_node.str))
+        if (!strcmp(word_structure->str, node->str_node.str))
         {
-            found = true;
-            break;
+            return true;
         }
         node = node->next;
     }
 
-    return found;
+    return false;
 }
 
 HashT_Errors SaveDataToCSVFile(hash_table_struct *hash_table, const char *name_of_file)

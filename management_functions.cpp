@@ -1,24 +1,35 @@
 #include "hash_table.h"
 
-HashT_Errors HashTableInit(hash_table_struct *hash_table, ssize_t capacity, const char *logfile_name, Using_HF hash_function)
+HashT_Errors HashTableInit(hash_table_struct *hash_table, size_t num_of_words_in_file, ssize_t capacity, const char *logfile_name, Using_HF hash_function)
 {
     assert(hash_table != NULL);
     assert(capacity > 0);
 
-    hash_table->file_name = logfile_name;
-
     hash_table->buckets = (HashBucket *)calloc(capacity, sizeof(HashBucket));
     if (hash_table->buckets == NULL) 
         return ALLOCATE_MEMORY_ERROR;
-
+    
+    size_t pool_size = sizeof(Node) * (size_t(num_of_words_in_file / 2) * 2 + 2);
+    hash_table->nodes_pool = (Node *)aligned_alloc(64, pool_size);
+    if (hash_table->nodes_pool == NULL) 
+    {
+        free(hash_table->buckets);
+        return ALLOCATE_MEMORY_ERROR;
+    }
+    memset(hash_table->nodes_pool, 0, pool_size);
+    
+    hash_table->file_name = logfile_name;
     hash_table->capacity = capacity;
     hash_table->total_elements = 0;
+    hash_table->next_free_node = 0;
     hash_table->HashFunction = hash_function;
 
     HashT_Errors err = NO_HT_ERROR;
 
     if ((err = HashTableVerify(hash_table)))
     {
+        free(hash_table->buckets);
+        free(hash_table->nodes_pool);
         HASHT_DUMP(hash_table);
         return err;
     }
@@ -33,10 +44,11 @@ HashT_Errors HashTableVerify(hash_table_struct *hash_table)
     ASSERT(hash_table);
 
     if      (hash_table == NULL)                       return EMPTY_POINTER_ON_HT_STRUCTURE;
-    else if (hash_table->capacity < 0)                 return ERROR_IN_CAPACITY;
-    else if (hash_table->buckets == NULL)              return EMPTY_POINTER_ON_DATA;
+    if      (hash_table->capacity < 0)                 return ERROR_IN_CAPACITY;
+    if      (hash_table->buckets == NULL)              return EMPTY_POINTER_ON_DATA;
     if      (hash_table->HashFunction.hash_f == NULL)  return EMPTY_POINTER_ON_HASH_FUNCTION;
     if      (hash_table->HashFunction.hf_name == NULL) return MISSING_HASH_FUNCTION_NAME;
+    if      (hash_table->nodes_pool == NULL)           return EMPTY_POINTER_ON_NODES_POOL;
     
     for (size_t i = 0; i < hash_table->capacity; i++)
     {
@@ -68,24 +80,14 @@ HashT_Errors HashTableDestroy(hash_table_struct *hash_table)
         return err;
     }
 
-    Node *current_node = NULL;
-    Node *next_node = NULL;
-
-    for (size_t i = 0; i < hash_table->capacity; i++)
-    {
-        current_node = hash_table->buckets[i].head;
-        while (current_node != NULL)
-        {
-            next_node = current_node->next;
-            free(current_node);
-            current_node = next_node;
-        }
-    }
-    
     free(hash_table->buckets);
+    free(hash_table->nodes_pool);
+
     hash_table->buckets = NULL;
+    hash_table->nodes_pool = NULL;
     hash_table->capacity = 0;
     hash_table->total_elements = 0;
+    hash_table->next_free_node = 0;
     
     printf("FREE\n");
 
