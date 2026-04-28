@@ -77,27 +77,37 @@ bool FindTheWordInHashTable(hash_table_struct *hash_table, String_Node *word_str
 
     while (node != NULL)
     {
-        int is_len_equal = 0;
+        int is_equal = 0;
 
-        // Compare lengths
         asm volatile (
-            "mov 8(%[node_str]), %%eax \n\t"  
-            "cmp %[target_len], %%eax  \n\t"  
-            "jne 1f                    \n\t"
-            "mov $1, %[res]            \n\t"  // if equal, res = 1
-            "1:                        \n\t"
-            : [res] "=r" (is_len_equal)
-            : [node_str] "r" (&node->str_node), [target_len] "r" (word_structure->len)
-            : "eax", "cc"
+            // 1. compare lengths
+            "mov 8(%[node]), %%eax        \n\t" // eax = node->str_node.len
+            "cmp 8(%[target]), %%eax      \n\t" // compare with word_to_find->len
+            "jne 1f                       \n\t" // если длины разные — сразу на выход
+            
+            // 2. get the addresses of the strings
+            "mov (%[node]), %%r8          \n\t" // r8 = node->str_node.str
+            "mov (%[target]), %%r9        \n\t" // r9 = word_to_find->str
+            
+            // 3. AVX-comparison
+            "vmovdqa (%%r8), %%ymm0       \n\t" 
+            "vmovdqa (%%r9), %%ymm1       \n\t"
+            "vpcmpeqb %%ymm1, %%ymm0, %%ymm0 \n\t" 
+            "vpmovmskb %%ymm0, %%eax      \n\t" // move mask
+            
+            "cmp $0xFFFFFFFF, %%eax       \n\t" 
+            "jne 1f                       \n\t"
+            "mov $1, %[res]               \n\t" // if equal?, res = 1
+            
+            "1:                           \n\t"
+            "vzeroupper                   \n\t" 
+            
+            : [res] "=r" (is_equal)
+            : [node] "r" (&node->str_node), [target] "r" (word_structure)
+            : "rax", "r8", "r9", "ymm0", "ymm1", "cc"
         );
 
-        if (is_len_equal) 
-        {
-            if (!my_strcmp(word_structure, &(node->str_node)))
-            {
-                return true;
-            }
-        }
+        if (is_equal) return true;
         node = node->next;
     }
     

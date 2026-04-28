@@ -5,7 +5,7 @@ CXX = g++
 SOURCES =  main_argc.cpp hash_functions.cpp hash_table.cpp file_functions.cpp management_functions.cpp
 OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES)) my_strcmp.o
 
-all: hash_table_my_strcmp_asm_plus_inlining.exe
+all: hash_table_my_strcmp_asm_inline.exe
 
 %.o: %.cpp
 	@$(CXX) -g -c $^ -o $@ $(FLAGS)
@@ -13,11 +13,11 @@ all: hash_table_my_strcmp_asm_plus_inlining.exe
 my_strcmp.o: my_strcmp.asm
 	nasm -f elf64 my_strcmp.asm -o my_strcmp.o
 
-hash_table_my_strcmp_asm_plus_inlining.exe: $(OBJECTS)
+hash_table_my_strcmp_asm_inline.exe: $(OBJECTS)
 	@$(CXX) -g $^ -o $@ $(FLAGS)
 
 .PHONY: clean
 
 clean:
 	rm *.o
-	rm hash_table_my_strcmp_asm_plus_inlining.exe
+	rm hash_table_my_strcmp_asm_inline.exe
