@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     if (argc < 2) 
     {
         fprintf(stderr, "Usage: %s <function_number>\n", argv[0]);
-        return 1;
+        return -1;
     }
 
     Using_HF HashF = hf_structures[atoi(argv[1])];
@@ -30,8 +30,14 @@ int main(int argc, char *argv[])
         return 2;
 
     hash_table_struct hash_table;
-
+    
     HashT_Errors err = NO_HT_ERROR;
+    
+    if ((err = AlignTheBuffer(&data_in_buffer, &words)))
+    {
+        print_error(err);
+        return -3;
+    }
 
     if ((err = HashTableInit(&hash_table, words.num_of_words_in_file, 4001, "logfile.htm", HashF)))
     {
@@ -65,9 +71,12 @@ int main(int argc, char *argv[])
     volatile bool found = false;
 
     unsigned long long start = __rdtsc();
-    for (size_t i = 0; i < words.num_of_words_in_file; i++)
+    for (size_t j = 0; j < 500; j++)
     {
-        found = FindTheWordInHashTable(&hash_table, &(words.pointers_on_words_structures[i]));
+        for (size_t i = 0; i < words.num_of_words_in_file; i++)
+        {
+            found = FindTheWordInHashTable(&hash_table, &(words.pointers_on_words_structures[i]));
+        }
     }
     unsigned long long end = __rdtsc();
     printf("Ticks: %llu\n", end - start);

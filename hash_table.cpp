@@ -27,10 +27,13 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
         
         Node *current_node = hash_table->buckets[hash_index].head; 
         
-        while (current_node != NULL && strcmp(words.pointers_on_words_structures[i].str, current_node->str_node.str) != 0) 
+        while (current_node != NULL) 
         {
-            if (words.pointers_on_words_structures[i].len == current_node->str_node.len &&
-                strcmp(words.pointers_on_words_structures[i].str, current_node->str_node.str) == 0) 
+            #ifdef _MY_STRCMP
+            if (!my_strcmp(&(words.pointers_on_words_structures[i]), &(current_node->str_node))) 
+            #else 
+            if (!strcmp(words.pointers_on_words_structures[i].str, current_node->str_node.str))
+            #endif
             {
                 break; // found duplicate
             }
@@ -49,7 +52,7 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
         }
     }
     unsigned long long end = __rdtsc();
-    printf("Ticks for %s: %llu\n", hash_table->HashFunction.hf_name, end - start);
+    printf("Ticks for cycle in FillInHashTable: %llu\n", end - start);
 
     hash_table->total_elements = GetTotalElementsNumber(hash_table);
 
@@ -74,13 +77,17 @@ bool FindTheWordInHashTable(hash_table_struct *hash_table, String_Node *word_str
 
     while (node != NULL)
     {
+        #ifdef _MY_STRCMP
+        if (!my_strcmp(word_structure, &(node->str_node)))
+        #else
         if (!strcmp(word_structure->str, node->str_node.str))
+        #endif
         {
             return true;
         }
         node = node->next;
     }
-
+    
     return false;
 }
 

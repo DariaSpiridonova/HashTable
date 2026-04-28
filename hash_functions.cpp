@@ -123,19 +123,20 @@ size_t CRC32HFIntrin(String_Node *str_node, ssize_t capacity)
     uint64_t crc = 0xFFFFFFFF;
     size_t i = 0;
 
-    // Шаг 1: Обработка блоками по 8 байт
+    // Processing in blocks of 8 bytes
     for (; i + 8 <= str_node->len; i += 8) 
     {
         crc = _mm_crc32_u64(crc, *(uint64_t*)(str_node->str + i));
     }
 
-    // Шаг 2: Дообработка хвоста (если длина не кратна 8)
+    // Processing in blocks of 4 bytes
     if (i + 4 <= str_node->len) 
     {
         crc = _mm_crc32_u32((uint32_t)crc, *(uint32_t*)(str_node->str + i));
         i += 4;
     }
 
+    // Processing the remaining bytes
     while (i < str_node->len) 
     {
         crc = _mm_crc32_u8((uint32_t)crc, str_node->str[i++]);

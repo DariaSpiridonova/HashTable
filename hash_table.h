@@ -36,6 +36,12 @@ typedef struct
     uint32_t len;
 } String_Node;
 
+/*
++---------+---------+---------+---------+---------+---------+
+|book00000|cat000000|through00|         |         |         |
++---------+---------+---------+---------+---------+---------+
+*/
+
 typedef struct
 {
     size_t num_of_words_in_file;
@@ -103,6 +109,7 @@ HashT_Errors WriteToMDFile(hash_table_struct *hash_table, const char *png_name, 
 ssize_t GetTotalElementsNumber(const hash_table_struct *hash_table);
 double CalculateVariance(hash_table_struct *hash_table, size_t total_elements);
 
+HashT_Errors AlignTheBuffer(data_of_buffer *data_in_buffer, words_info *words);
 size_t GetNumOfBytesInFile(int fd1);
 data_of_buffer ReadToBufferFromFile(const char *name_of_file);
 size_t GetNumOfWordsInFile(char *buffer);
@@ -112,6 +119,7 @@ words_info GetWordsStruct(char *buffer);
 bool OpenFileSuccess(FILE *fp, const char * file_name);
 bool CloseFileSuccess(FILE *fp, const char * file_name);
 
+extern "C" int my_strcmp(const String_Node *string1, const String_Node *string2);
 
 size_t ZeroHF       (String_Node *str_node, ssize_t capacity);
 size_t FirstAlphaHF (String_Node *str_node, ssize_t capacity);
