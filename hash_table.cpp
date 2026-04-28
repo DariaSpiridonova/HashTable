@@ -25,22 +25,22 @@ HashT_Errors FillInHashTable(hash_table_struct *hash_table, words_info words)
     {
         hash_index = using_hf(&(words.pointers_on_words_structures[i]), hash_table->capacity);
         
-        Node *current_node = hash_table->buckets[hash_index].head; 
+        Node *node = hash_table->buckets[hash_index].head; 
         
-        while (current_node != NULL) 
+        while (node != NULL) 
         {
             #ifdef _MY_STRCMP
-            if (!my_strcmp(&(words.pointers_on_words_structures[i]), &(current_node->str_node))) 
+            if (!my_strcmp(&(words.pointers_on_words_structures[i]), &(node->str_node))) 
             #else 
-            if (!strcmp(words.pointers_on_words_structures[i].str, current_node->str_node.str))
+            if (!strcmp(words.pointers_on_words_structures[i].str, node->str_node.str))
             #endif
             {
                 break; // found duplicate
             }
-            current_node = current_node->next;
+            node = node->next;
         }
 
-        if (current_node == NULL) 
+        if (node == NULL) 
         {
             Node *new_node = &(hash_table->nodes_pool[hash_table->next_free_node++]);
                
@@ -77,13 +77,26 @@ bool FindTheWordInHashTable(hash_table_struct *hash_table, String_Node *word_str
 
     while (node != NULL)
     {
-        #ifdef _MY_STRCMP
-        if (!my_strcmp(word_structure, &(node->str_node)))
-        #else
-        if (!strcmp(word_structure->str, node->str_node.str))
-        #endif
+        int is_len_equal = 0;
+
+        // Compare lengths
+        asm volatile (
+            "mov 8(%[node_str]), %%eax \n\t"  
+            "cmp %[target_len], %%eax  \n\t"  
+            "jne 1f                    \n\t"
+            "mov $1, %[res]            \n\t"  // if equal, res = 1
+            "1:                        \n\t"
+            : [res] "=r" (is_len_equal)
+            : [node_str] "r" (&node->str_node), [target_len] "r" (word_structure->len)
+            : "eax", "cc"
+        );
+
+        if (is_len_equal) 
         {
-            return true;
+            if (!my_strcmp(word_structure, &(node->str_node)))
+            {
+                return true;
+            }
         }
         node = node->next;
     }
