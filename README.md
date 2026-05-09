@@ -21,7 +21,7 @@ Let's compare the results of various hash functions for filling in a hash table.
 **Total Words        :** 6903   \
 **Variance           :** 11907.424144 
 ### Hash Histogram
-![A histogram of the distribution of words in a hash table](hash_table_2026_05_07_15_44_06453847541.png)
+![A histogram of the distribution of words in a hash table](0.png)
 
 -------------------------------------------------------------------------
 ### 1
@@ -30,7 +30,7 @@ Let's compare the results of various hash functions for filling in a hash table.
 **Total Words        :** 6903 \
 **Variance           :** 493.065734 
 ### Hash Histogram
-![A histogram of the distribution of words in a hash table](hash_table_2026_05_07_15_42_46417586584.png)
+![A histogram of the distribution of words in a hash table](1.png)
 
 -------------------------------------------------------------------------
 ### 2
@@ -39,7 +39,7 @@ Let's compare the results of various hash functions for filling in a hash table.
 **Total Words        :** 6903 \
 **Variance           :** 1496.786803 
 ### Hash Histogram
-![A histogram of the distribution of words in a hash table](hash_table_2026_05_07_15_42_53569594392.png)
+![A histogram of the distribution of words in a hash table](2.png)
 
 -------------------------------------------------------------------------
 ### 3
@@ -48,7 +48,7 @@ Let's compare the results of various hash functions for filling in a hash table.
 **Total Words        :** 6903 \
 **Variance           :** 20.088978
 ### Hash Histogram
-![A histogram of the distribution of words in a hash table](hash_table_2026_05_07_15_42_57148875293.png)
+![A histogram of the distribution of words in a hash table](3.png)
 
 -------------------------------------------------------------------------
 ### 4
@@ -57,16 +57,16 @@ Let's compare the results of various hash functions for filling in a hash table.
 **Total Words        :** 6903 \
 **Variance           :** 2.151962
 ### Hash Histogram
-![A histogram of the distribution of words in a hash table](hash_table_2026_05_07_15_43_01336236151.png)
+![A histogram of the distribution of words in a hash table](4.png)
 
 -------------------------------------------------------------------------
 ### 5
-**Hash Function      :** CRC32HF \ 
+**Hash Function      :** CRC32HF  
 **Hash Table Capacity:** 4001 \
 **Total Words        :** 6903 \
 **Variance           :** 2.222444
 ### Hash Histogram
-![A histogram of the distribution of words in a hash table](hash_table_2026_05_07_15_43_08636047401.png)
+![A histogram of the distribution of words in a hash table](5.png)
 
 -------------------------------------------------------------------------
 
